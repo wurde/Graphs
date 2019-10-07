@@ -1,7 +1,16 @@
 """
 Simple graph implementation
 """
-from util import Stack, Queue  # These may come in handy
+
+#
+# Dependencies
+#
+
+from util import Stack, Queue
+
+#
+# Define data structure
+#
 
 class Graph:
     """Represent a graph as a dictionary of vertices mapping labels to edges."""
@@ -67,6 +76,7 @@ class Graph:
         This should be done using recursion.
         """
         pass  # TODO
+
     def bfs(self, starting_vertex, destination_vertex):
         """
         Return a list containing the shortest path from
@@ -74,6 +84,7 @@ class Graph:
         breath-first order.
         """
         pass  # TODO
+
     def dfs(self, starting_vertex, destination_vertex):
         """
         Return a list containing a path from
@@ -83,8 +94,9 @@ class Graph:
         pass  # TODO
 
 
-
-
+#
+# Execute commands
+#
 
 if __name__ == '__main__':
     graph = Graph()  # Instantiate your graph
