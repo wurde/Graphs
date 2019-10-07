@@ -23,7 +23,7 @@ class Graph:
         Print each vertex in breadth-first order
         beginning from starting_vertex.
         """
-        print('\nBFT paths:')
+        print('\nBFT path:')
 
         visited = set()
         queue = Queue()
@@ -44,23 +44,21 @@ class Graph:
         Print each vertex in depth-first order
         beginning from starting_vertex.
         """
-        print('\nDFT paths:')
-        return
+        print('\nDFT path:')
 
-        vertices = list(self.vertices.keys())
-        vertices.remove(starting_vertex)
-        print(starting_vertex)
-
+        visited = set()
         stack = Stack()
-        nextVertices = list(self.vertices[starting_vertex])
-        while len(vertices) > 0:
-            for i in range(0, len(nextVertices)):
-                vertex = nextVertices[i]
-                stack.push(vertex)
+        stack.push(starting_vertex)
 
+        while stack.size() > 0:
             nextVertex = stack.pop()
-            nextVertices = self.vertices[nextVertex]
-            vertices.remove(nextVertex)
+
+            if nextVertex not in visited:
+                print(nextVertex)
+                visited.add(nextVertex)
+
+                for vert in self.vertices[nextVertex]:
+                    stack.push(vert)
 
     def dft_recursive(self, starting_vertex):
         """
