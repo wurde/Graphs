@@ -91,7 +91,38 @@ class Graph:
         starting_vertex to destination_vertex in
         breath-first order.
         """
-        pass  # TODO
+        print('\nBFS path:')
+
+        visited = set()
+        previous_vertex = {}
+
+        queue = Queue()
+        queue.enqueue(starting_vertex)
+
+        while queue.size() > 0:
+            vertex = queue.dequeue()
+
+            if vertex not in visited:
+                visited.add(vertex)
+
+                if vertex == destination_vertex:
+                    current_vertex = destination_vertex
+                    path = []
+
+                    while current_vertex != starting_vertex:
+                        path.append(current_vertex)
+                        current_vertex = previous_vertex[current_vertex]
+
+                    path.append(starting_vertex)
+                    path.reverse()
+
+                    return path
+
+                for next_vert in self.vertices[vertex]:
+                    if next_vert not in previous_vertex:
+                        previous_vertex[next_vert] = vertex
+
+                    queue.enqueue(next_vert)
 
     def dfs(self, starting_vertex, destination_vertex):
         """
@@ -99,8 +130,38 @@ class Graph:
         starting_vertex to destination_vertex in
         depth-first order.
         """
-        pass  # TODO
+        print('\nDFS path:')
 
+        visited = set()
+        previous_vertex = {}
+
+        stack = Stack()
+        stack.push(starting_vertex)
+
+        while stack.size() > 0:
+            vertex = stack.pop()
+
+            if vertex not in visited:
+                visited.add(vertex)
+
+                if vertex == destination_vertex:
+                    current_vertex = destination_vertex
+                    path = []
+
+                    while current_vertex != starting_vertex:
+                        path.append(current_vertex)
+                        current_vertex = previous_vertex[current_vertex]
+
+                    path.append(starting_vertex)
+                    path.reverse()
+
+                    return path
+
+                for next_vert in self.vertices[vertex]:
+                    if next_vert not in previous_vertex:
+                        previous_vertex[next_vert] = vertex
+
+                    stack.push(next_vert)
 
 #
 # Execute commands
