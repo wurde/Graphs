@@ -31,6 +31,10 @@ def earliest_ancestor(ancestors, starting_node):
     for relationship in ancestors:
         graph.add_vertex(relationship[0], relationship[1])
 
-    print(f"graph.vertices {graph.vertices}")
+    # print(f"graph.vertices {graph.vertices}")
     #=> {3: {1, 2}, 6: {3, 5}, 7: {5}, 5: {4}, 8: {11, 4}, 9: {8}, 1: {10}}
-    
+
+    if starting_node not in graph.vertices:
+        return -1
+
+
