@@ -37,4 +37,11 @@ def earliest_ancestor(ancestors, starting_node):
     if starting_node not in graph.vertices:
         return -1
 
+    current_vertex = starting_node
+    next_vertex = min(graph.vertices[current_vertex])
+    while next_vertex in graph.vertices:
+        current_vertex = next_vertex
+        next_vertex = min(graph.vertices[current_vertex])
+    
+    return next_vertex
 
