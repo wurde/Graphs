@@ -70,9 +70,7 @@ class SocialGraph:
         currentCount = 0
         collisions = 0
 
-        count = 0
-        while count < 20 and  currentCount < targetFriendCount:
-            count += 1
+        while currentCount < targetFriendCount:
             userID = random.randint(1, self.lastID)
             friendID = random.randint(1, self.lastID)
 
@@ -111,11 +109,16 @@ class SocialGraph:
         return visited
 
 
-if __name__ == '__main__':
+if __name__ == '__main__':    
     sg = SocialGraph()
     print(f"SocialGraph users: {sg.users} friendships: {sg.friendships}")
 
+    # Populate with 10 users with 2 friends on average.
     sg.populateGraph(10, 2)
+    print(sg.friendships)
+
+    # Populate with 100 users with 10 friends on average.
+    sg.populateGraph(100, 10)
     print(sg.friendships)
 
     connections = sg.getAllSocialPaths(1)
