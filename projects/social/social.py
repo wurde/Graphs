@@ -7,6 +7,7 @@ Objectives: Student should be able to demonstrate an
 # Dependencies
 #
 
+import uuid
 from queue import Queue
 
 #
@@ -15,6 +16,7 @@ from queue import Queue
 
 class User:
     def __init__(self, name):
+        print(f"Name: {name}")
         self.name = name
 
 class SocialGraph:
@@ -57,14 +59,15 @@ class SocialGraph:
         self.lastID = 0
         self.users = {}
         self.friendships = {}
-        # !!!! IMPLEMENT ME
 
         # Add users
         for i in range(numUsers):
-            self.addUser(f"User {i + 1}")
+            self.addUser(str(uuid.uuid4()))
 
         # Create friendships
-        targetfriends = []
+        targetfriends = (numUsers * avgFriendships) // 2
+        totalFriendships = 0
+        collisions = 0
 
     def getAllSocialPaths(self, userID):
         """
@@ -75,20 +78,19 @@ class SocialGraph:
 
         The key is the friend's ID and the value is the path.
         """
-        visited = {}  # Note that this is a dictionary, not a set
-        # !!!! IMPLEMENT ME
+        visited = {}
 
         q = Queue()
         q.enqueue(userID)
 
         while q.size() > 0:
             path = q.dequeue()
-            newUserID = path[-1]
+            friendID = path[-1]
 
-            if newUserID not in visited:
-                visited[newUserID] = path
+            if friendID not in visited:
+                visited[friendID] = path
 
-                for friendID in self.friendships[newUserID]:
+                for friendID in self.friendships[friendID]:
                     if friendID not in visited:
                         new_path = list(path)
                         new_path.append(friendID)
