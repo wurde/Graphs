@@ -66,15 +66,19 @@ class SocialGraph:
             self.addUser(str(uuid.uuid4()))
 
         # Create friendships
-        targetFriendCount = (numUsers * avgFriendships) // 2
+        targetFriendCount = (numUsers * avgFriendships)
         currentCount = 0
         collisions = 0
+        count = 0
 
         while currentCount < targetFriendCount:
             userID = random.randint(1, self.lastID)
             friendID = random.randint(1, self.lastID)
 
             if self.addFriendship(userID, friendID):
+                count += 1
+                print(f"targetFriendCount {targetFriendCount}")
+                print(f"Count: {count}") #=> 250
                 currentCount += 2
             else:
                 collisions += 1
@@ -113,20 +117,27 @@ if __name__ == '__main__':
     sg = SocialGraph()
     print(f"SocialGraph users: {sg.users} friendships: {sg.friendships}")
 
-    # Populate with 10 users with 2 friends on average.
-    sg.populateGraph(10, 2)
-    print("Users: 10 FriendshipsOnAverage: 2")
-    print(sg.friendships, '\n')
+    # # Populate with 10 users with 2 friends on average.
+    # sg.populateGraph(10, 2)
+    # print("Users: 10 FriendshipsOnAverage: 2")
+    # print(sg.friendships, '\n')
 
     # Populate with 100 users with 10 friends on average.
     sg.populateGraph(100, 10)
     print("Users: 100 FriendshipsOnAverage: 10")
     print(sg.friendships, '\n')
 
-    # Populate with 1000 users with 5 friends on average.
-    print("Users: 1000 FriendshipsOnAverage: 5")
-    sg.populateGraph(1000, 5)
-    print(sg.friendships, '\n')
+    total = 0
+    count = 0
+    for friendship in sg.friendships:
+        count += 1
+        total += len(sg.friendships[friendship])
+    print(f"Count {count} Total {total} Average {total / count}")
+
+    # # Populate with 1000 users with 5 friends on average.
+    # print("Users: 1000 FriendshipsOnAverage: 5")
+    # sg.populateGraph(1000, 5)
+    # print(sg.friendships, '\n')
 
     connections = sg.getAllSocialPaths(1)
     print(connections)
