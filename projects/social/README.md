@@ -59,5 +59,11 @@ the average user.
 
 1. You might have found the results from question #2 above to be surprising. Would you expect results like this in real life? If not, what are some ways you could improve your friendship distribution model for more realistic results?
 
+I wouldn't expect these results in real life. I suspect that there'd be closer to 6 degrees of separation between the average user.
+
+https://en.m.wikipedia.org/wiki/Six_degrees_of_separation
+
+To ensure a distribution model closer matching real life we could use a normal distribution of friendships. This way some users will have significantly more friends than others.
+
 2. If you followed the hints for part 1, your `populateGraph()` will run in O(n^2) time. Refactor your code to run in O(n) time. Are there any tradeoffs that come with this implementation?
 
