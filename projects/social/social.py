@@ -36,6 +36,7 @@ class SocialGraph:
         else:
             self.friendships[userID].add(friendID)
             self.friendships[friendID].add(userID)
+            return True
 
     def addUser(self, name):
         """
@@ -69,14 +70,16 @@ class SocialGraph:
         currentCount = 0
         collisions = 0
 
-        # while currentCount < targetFriendCount:
-        #     userID = random.randint(1, self.lastID)
-        #     friendID = random.randint(1, self.lastID)
+        count = 0
+        while count < 20 and  currentCount < targetFriendCount:
+            count += 1
+            userID = random.randint(1, self.lastID)
+            friendID = random.randint(1, self.lastID)
 
-        #     if self.addFriendship(userID, friendID):
-        #         currentCount += 2
-        #     else:
-        #         collisions += 1
+            if self.addFriendship(userID, friendID):
+                currentCount += 2
+            else:
+                collisions += 1
 
     def getAllSocialPaths(self, userID):
         """
