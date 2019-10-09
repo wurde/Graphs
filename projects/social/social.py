@@ -78,7 +78,7 @@ class SocialGraph:
             if self.addFriendship(userID, friendID):
                 count += 1
                 print(f"targetFriendCount {targetFriendCount}")
-                print(f"Count: {count}") #=> 250
+                print(f"Count: {count}")
                 currentCount += 2
             else:
                 collisions += 1
@@ -122,22 +122,33 @@ if __name__ == '__main__':
     # print("Users: 10 FriendshipsOnAverage: 2")
     # print(sg.friendships, '\n')
 
-    # Populate with 100 users with 10 friends on average.
-    sg.populateGraph(100, 10)
-    print("Users: 100 FriendshipsOnAverage: 10")
+    # # Populate with 100 users with 10 friends on average.
+    # sg.populateGraph(100, 10)
+    # print("Users: 100 FriendshipsOnAverage: 10")
+    # print(sg.friendships, '\n')
+
+    # Populate with 1000 users with 5 friends on average.
+    print("Users: 1000 FriendshipsOnAverage: 5")
+    sg.populateGraph(1000, 5)
     print(sg.friendships, '\n')
 
-    total = 0
-    count = 0
-    for friendship in sg.friendships:
-        count += 1
-        total += len(sg.friendships[friendship])
-    print(f"Count {count} Total {total} Average {total / count}")
-
-    # # Populate with 1000 users with 5 friends on average.
-    # print("Users: 1000 FriendshipsOnAverage: 5")
-    # sg.populateGraph(1000, 5)
-    # print(sg.friendships, '\n')
+    # total = 0
+    # count = 0
+    # for friendship in sg.friendships:
+    #     count += 1
+    #     total += len(sg.friendships[friendship])
+    # print(f"Count {count} Total {total} Average {total / count}")
 
     connections = sg.getAllSocialPaths(1)
     print(connections)
+
+    # Calculating percentage of other users will be in a 
+    # particular user's extended social network.
+    unique_friends = set()
+    for friendship in sg.friendships:
+        for friend in sg.friendships[friendship]:
+            unique_friends.add(friend)
+    print(f"Unique friends: {len(unique_friends)}  {len(unique_friends) / 1000}")
+    #=> Unique friends: 991  0.991
+    #=> Unique friends: 993  0.993
+    #=> Unique friends: 990  0.99
