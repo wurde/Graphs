@@ -1,4 +1,12 @@
+#
+# Dependencies
+#
 
+from queue import Queue
+
+#
+# Define data structures
+#
 
 class User:
     def __init__(self, name):
@@ -47,8 +55,11 @@ class SocialGraph:
         # !!!! IMPLEMENT ME
 
         # Add users
+        for i in range(numUsers):
+            self.addUser(f"User {i + 1}")
 
         # Create friendships
+        targetfriends = []
 
     def getAllSocialPaths(self, userID):
         """
@@ -61,6 +72,10 @@ class SocialGraph:
         """
         visited = {}  # Note that this is a dictionary, not a set
         # !!!! IMPLEMENT ME
+
+        q = Queue()
+        q.enqueue(userID)
+
         return visited
 
 
