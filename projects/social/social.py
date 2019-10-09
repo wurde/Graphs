@@ -115,11 +115,18 @@ if __name__ == '__main__':
 
     # Populate with 10 users with 2 friends on average.
     sg.populateGraph(10, 2)
-    print(sg.friendships)
+    print("Users: 10 FriendshipsOnAverage: 2")
+    print(sg.friendships, '\n')
 
     # Populate with 100 users with 10 friends on average.
     sg.populateGraph(100, 10)
-    print(sg.friendships)
+    print("Users: 100 FriendshipsOnAverage: 10")
+    print(sg.friendships, '\n')
+
+    # Populate with 1000 users with 5 friends on average.
+    print("Users: 1000 FriendshipsOnAverage: 5")
+    sg.populateGraph(1000, 5)
+    print(sg.friendships, '\n')
 
     connections = sg.getAllSocialPaths(1)
     print(connections)
