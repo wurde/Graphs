@@ -1,3 +1,8 @@
+"""
+Objectives: Student should be able to demonstrate an 
+            understanding of randomness and its applications.
+"""
+
 #
 # Dependencies
 #
