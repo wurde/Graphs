@@ -52,7 +52,8 @@ You'd need to call `addFriendship()` 500 times. Target friend relationships is 5
 
 2. If you create 1000 users with an average of 5 random friends each, what percentage of other users will be in a particular user's extended social network? What is the average degree of separation between a user and those in his/her extended network?
 
-From over a dozen observations the typical percentage of other users in a particular user's extended social network is around 99 percent.
+From over a dozen observations the typical percentage of other users in a particular user's extended social network is around 99 percent. There is a single degree of separation between
+the average user.
 
 ## 4. Stretch Goal
 
