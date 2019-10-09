@@ -67,3 +67,4 @@ To ensure a distribution model closer matching real life we could use a normal d
 
 2. If you followed the hints for part 1, your `populateGraph()` will run in O(n^2) time. Refactor your code to run in O(n) time. Are there any tradeoffs that come with this implementation?
 
+Solution for `populateGraph()` already has a linear time complexity.
