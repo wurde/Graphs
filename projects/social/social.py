@@ -93,16 +93,16 @@ class SocialGraph:
         visited = {}
 
         q = Queue()
-        q.enqueue(userID)
+        q.enqueue([userID])
 
         while q.size() > 0:
             path = q.dequeue()
-            friendID = path[-1]
+            newUserID = path[-1]
 
-            if friendID not in visited:
-                visited[friendID] = path
+            if newUserID not in visited:
+                visited[newUserID] = path
 
-                for friendID in self.friendships[friendID]:
+                for friendID in self.friendships[newUserID]:
                     if friendID not in visited:
                         new_path = list(path)
                         new_path.append(friendID)
@@ -118,5 +118,5 @@ if __name__ == '__main__':
     sg.populateGraph(10, 2)
     print(sg.friendships)
 
-    # connections = sg.getAllSocialPaths(1)
-    # print(connections)
+    connections = sg.getAllSocialPaths(1)
+    print(connections)
