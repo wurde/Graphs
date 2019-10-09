@@ -15,7 +15,7 @@ class Graph:
         #   1: {10},
         # }
     
-    def add_vertex(self, parent, child):
+    def add_vertex_and_edge(self, parent, child):
         if child not in self.vertices:
             self.vertices[child] = set()
 
@@ -29,7 +29,7 @@ def earliest_ancestor(ancestors, starting_node):
     graph = Graph()
 
     for relationship in ancestors:
-        graph.add_vertex(relationship[0], relationship[1])
+        graph.add_vertex_and_edge(relationship[0], relationship[1])
 
     # print(f"graph.vertices {graph.vertices}")
     #=> {3: {1, 2}, 6: {3, 5}, 7: {5}, 5: {4}, 8: {11, 4}, 9: {8}, 1: {10}}

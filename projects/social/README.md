@@ -48,13 +48,23 @@ Note that in this sample, Users 3, 4 and 9 are not in User 1's extended social n
 
 1. To create 100 users with an average of 10 friends each, how many times would you need to call `addFriendship()`? Why?
 
+You'd need to call `addFriendship()` 500 times. Target friend relationships is 500 across 100 users. Since friend relationships are bi-directional each count for 2 giving us 1000 individual friends.
+
 2. If you create 1000 users with an average of 5 random friends each, what percentage of other users will be in a particular user's extended social network? What is the average degree of separation between a user and those in his/her extended network?
 
-
+From over a dozen observations the typical percentage of other users in a particular user's extended social network is around 99 percent. There is a single degree of separation between
+the average user.
 
 ## 4. Stretch Goal
 
 1. You might have found the results from question #2 above to be surprising. Would you expect results like this in real life? If not, what are some ways you could improve your friendship distribution model for more realistic results?
 
+I wouldn't expect these results in real life. I suspect that there'd be closer to 6 degrees of separation between the average user.
+
+https://en.m.wikipedia.org/wiki/Six_degrees_of_separation
+
+To ensure a distribution model closer matching real life we could use a normal distribution of friendships. This way some users will have significantly more friends than others.
+
 2. If you followed the hints for part 1, your `populateGraph()` will run in O(n^2) time. Refactor your code to run in O(n) time. Are there any tradeoffs that come with this implementation?
 
+Solution for `populateGraph()` already has a linear time complexity.
