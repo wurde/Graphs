@@ -8,6 +8,7 @@ Objectives: Student should be able to demonstrate an
 #
 
 import uuid
+import random
 from queue import Queue
 
 #
@@ -16,7 +17,6 @@ from queue import Queue
 
 class User:
     def __init__(self, name):
-        print(f"Name: {name}")
         self.name = name
 
 class SocialGraph:
@@ -30,9 +30,9 @@ class SocialGraph:
         Creates a bi-directional friendship
         """
         if userID == friendID:
-            print("WARNING: You cannot be friends with yourself")
+            print("WARNING: You cannot be friends with yourself", userID, friendID)
         elif friendID in self.friendships[userID] or userID in self.friendships[friendID]:
-            print("WARNING: Friendship already exists")
+            print("WARNING: Friendship already exists", userID, friendID, self.friendships[userID], self.friendships[friendID])
         else:
             self.friendships[userID].add(friendID)
             self.friendships[friendID].add(userID)
@@ -65,9 +65,18 @@ class SocialGraph:
             self.addUser(str(uuid.uuid4()))
 
         # Create friendships
-        targetfriends = (numUsers * avgFriendships) // 2
-        totalFriendships = 0
+        targetFriendCount = (numUsers * avgFriendships) // 2
+        currentCount = 0
         collisions = 0
+
+        # while currentCount < targetFriendCount:
+        #     userID = random.randint(1, self.lastID)
+        #     friendID = random.randint(1, self.lastID)
+
+        #     if self.addFriendship(userID, friendID):
+        #         currentCount += 2
+        #     else:
+        #         collisions += 1
 
     def getAllSocialPaths(self, userID):
         """
@@ -101,7 +110,10 @@ class SocialGraph:
 
 if __name__ == '__main__':
     sg = SocialGraph()
+    print(f"SocialGraph users: {sg.users} friendships: {sg.friendships}")
+
     sg.populateGraph(10, 2)
     print(sg.friendships)
-    connections = sg.getAllSocialPaths(1)
-    print(connections)
+
+    # connections = sg.getAllSocialPaths(1)
+    # print(connections)
